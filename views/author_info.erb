@@ -11,7 +11,7 @@
     <% @books.each() do |book| %>
       <div class="checkbox">
         <label>
-          <input type="checkbox" name="book_id[]" value="<%= book.id() %>"><%= book.name() %>
+          <input type="checkbox" name="book_id[]" value="<%= book.id() %>"><%= book.title() %>
         </label>
       </div>
     <% end %>
@@ -26,7 +26,7 @@
 
   <ul>
     <% @author.books().each() do |book| %>
-      <li><%= book.name() %></li>
+      <li><%= book.title() %></li>
     <% end %>
   </ul>
 <% else %>

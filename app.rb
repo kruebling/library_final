@@ -59,7 +59,7 @@ end
 
 get("/books/:id") do
   @book = Book.find(params.fetch("id").to_i())
-  @author = Author.all()
+  @authors = Author.all()
   erb(:book_info)
 end
 
