@@ -1,0 +1,36 @@
+<div class="jumbotron">
+  <h1><%= @book.name() %></h1>
+</div>
+
+<h3>Select all authors that collaborated on this book:</h3>
+
+<% if @authors.any?() %>
+  <form action="/books/<%= @book.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <% @authors.each() do |author| %>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="author_id[]" value="<%= author.id() %>"><%= author.name() %>
+        </label>
+      </div>
+    <% end %>
+
+    <button type="submit">Add Authors</button>
+  </form>
+<% end %>
+
+<% if @books.authors().any?() %>
+
+  <h3>Here are all the authors that collaborated on this book:</h3>
+
+  <ul>
+    <% @book.authors().each() do |author| %>
+      <li><%= author.name() %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no authors yet! <a href="/authors">Add authors here</a></p>
+<% end %>
+
+
+<a href="/library">Return to Main Page</a>

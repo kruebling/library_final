@@ -1,0 +1,29 @@
+<div class="jumbotron">
+  <h1>Welcome to the Authors page</h1>
+</div>
+
+<p>Add an author to the database:</p>
+
+<form action="/authors" method="post">
+  <label for="name">Authors's name:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Add an author</button>
+</form>
+
+
+<% if @authors.any?() %>
+  <p>Click on an author to see information about them and to assign them to different book:</p>
+
+  <ul>
+    <% @authors.each do |author| %>
+      <li><a href="/authors/<%= author.id() %>"><%= author.name() %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no authors added yet!</p>
+<% end %>
+
+<p><a href="/books">See all books</a></p>
+
+<p><a href="/library">Return to Main Page</a></p>
